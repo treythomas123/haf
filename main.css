@@ -17,12 +17,15 @@ div.tile {
 	height:130px;
 	margin:5px;
 	float:left;
-	background-image: url('1.jpg');
 	background-size: cover;
 }
 
-div.shutter {
-	background-image: url('b1.5.jpg');
+div.lamp {
+	background-image: url('lamp.jpg');
+}
+
+div.blinds {
+	background-image: url('blinds.jpg');
 }
 
 div.tile:hover {
