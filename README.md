@@ -1,0 +1,4 @@
+haf
+===
+
+Home Automation Framework
