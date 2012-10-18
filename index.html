@@ -1,0 +1,53 @@
+<html>
+<head>
+	<title>Automate</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=0" />
+	<script src="jquery-1.8.1.min.js"></script>
+</head>
+
+<body>
+
+<div class="wrapper">
+	<div class="tile" function="turnOn" target="1"></div>
+	<div class="tile" function="turnOn" target="2"></div>
+	<div class="tile" function="turnOn" target="3"></div>
+	<div class="tile shutter" function="turnOn" target="4"></div>
+</div>
+
+<script>
+
+//var preventClick = false;
+
+$("div.tile").bind("touchstart", function(event) {
+	$(event.target).css("background-position", "-130px");
+	//setTimeout( function() {
+});
+
+$("div.tile").bind("touchend", function(event) {
+
+	// Build and send request to complete the desired action
+	
+	var query = "function=" + $(event.target).attr("function") + "&" +
+	            "outlet="   + $(event.target).attr("target") + "&";
+	
+	$.get("test.wsgi?"+query, function(data) {
+		
+	});
+	
+	
+	// Toggle the state of the button between turnOff/turnOn
+	
+	if ( $(event.target).attr("function") == "turnOff" ) {
+		$(event.target).attr("function","turnOn");
+		$(event.target).css("background-position", "0px");
+	} else {
+		$(event.target).attr("function","turnOff");
+		$(event.target).css("background-position", "-260px");
+	}
+});
+
+</script>
+
+</body>
+</html>
