@@ -52,7 +52,7 @@ $("div.tile").bind("click", function(event) {
 function activate(event) {
 	$(event.target).removeClass("touched");
 	
-	var query = "id=" + $(event.target).attr("id") + "&" +
+	var query = "address=" + $(event.target).attr("id") + "&" +
 				"state=" + $(event.target).attr("state") + "&";
 	
 	$.get("test.wsgi?"+query, function(data) {
