@@ -1,52 +1,73 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
 	<title>Automate</title>
 	<link rel="stylesheet" type="text/css" href="main.css">
-	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=0" />
+	
+	
+	<meta id="viewport" name='viewport'>
+	<script>
+		(function(doc) {
+			var viewport = document.getElementById('viewport');
+			if ( navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) {
+				doc.getElementById("viewport").setAttribute("content", "width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=0");
+			} 
+		}(document));
+	</script>
 	<script src="jquery-1.8.1.min.js"></script>
 </head>
 
 <body>
 
 <div class="wrapper">
-	<div class="tile lamp" function="turnOn" target="1"></div>
-	<div class="tile lamp" function="turnOn" target="2"></div>
-	<div class="tile lamp" function="turnOn" target="3"></div>
-	<div class="tile blinds" function="turnOn" target="4"></div>
+	<div class="tile lamp" state="0" id="1"></div>
+	<div class="tile lamp" state="0" id="2"></div>
+	<div class="tile fan" state="0" id="3"></div>
+	<div class="tile blinds" state="0" id="4"></div>
+	
+	<div style="clear:both"></div>
+
 </div>
 
 <script>
 
-//var preventClick = false;
+var preventClick = false;
 
 $("div.tile").bind("touchstart", function(event) {
-	$(event.target).css("background-position", "-130px");
-	//setTimeout( function() {
+	$(event.target).addClass("touched");
 });
 
-$("div.tile").bind("touchend", function(event) {
-
-	// Build and send request to complete the desired action
+$("div.tile").bind("touchend",function(event) {
+	preventClick = true;
+	setTimeout( function() { preventClick = false; }, 400 );
 	
-	var query = "function=" + $(event.target).attr("function") + "&" +
-	            "outlet="   + $(event.target).attr("target") + "&";
+	activate(event);
+});
+
+$("div.tile").bind("click", function(event) {
+	if ( preventClick ) { return; }
+	
+	activate(event);
+});
+
+function activate(event) {
+	$(event.target).removeClass("touched");
+	
+	var query = "id=" + $(event.target).attr("id") + "&" +
+				"state=" + $(event.target).attr("state") + "&";
 	
 	$.get("test.wsgi?"+query, function(data) {
-		
+		// Done
 	});
 	
-	
-	// Toggle the state of the button between turnOff/turnOn
-	
-	if ( $(event.target).attr("function") == "turnOff" ) {
-		$(event.target).attr("function","turnOn");
-		$(event.target).css("background-position", "0px");
+	// Toggle the state of the button
+	if ( $(event.target).attr("state") == "0" ) {
+		$(event.target).attr("state","1");
+		$(event.target).css("background-position", "-100%");
 	} else {
-		$(event.target).attr("function","turnOff");
-		$(event.target).css("background-position", "-260px");
+		$(event.target).attr("state","0");
+		$(event.target).css("background-position", "0%");
 	}
-});
+}
 
 </script>
 

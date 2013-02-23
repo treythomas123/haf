@@ -1,13 +1,13 @@
 body {
 	margin: 0px;
-	padding-top: 18px;
-	box-shadow: inset 0px 0px 15px 5px #888;
+	padding: 0px;
 }
 
 
 div.wrapper {
-	margin: 0px auto;
+	margin: 18px auto;
 	width: 280px;
+	text-align: center;
 }
 
 * {
@@ -17,6 +17,8 @@ div.wrapper {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	
+	-webkit-tap-highlight-color: #ffffff;
 }
 
 div.tile {
@@ -25,16 +27,26 @@ div.tile {
 	margin:5px;
 	float:left;
 	background-size: cover;
+	cursor:pointer;
 }
+
+div.touched {
+	width: 120px;
+	height: 120px;
+	margin:10px;
+}
+
 
 div.lamp {
 	background-image: url('lamp.jpg');
 }
 
+div.fan {
+	background-image: url('fan.jpg');
+}
+
+
 div.blinds {
 	background-image: url('blinds.jpg');
 }
 
-div.tile:hover {
-	background-position: 130px;
-}

@@ -1,8 +1,8 @@
 import os
 import time
 
-onPinForOutlet = { '1':'22', '2':'10', '3':'21' }
-offPinForOutlet = { '1':'9', '2':'11', '3':'17' }
+onPinForOutlet = { '1':'0', '2':'1', '3':'4' }
+offPinForOutlet = { '1':'17', '2':'21', '3':'22' }
 
 def application(environ, start_response):
 	
@@ -17,8 +17,14 @@ def application(environ, start_response):
 	
 	# Perform the requested operation
 	
-	if		query['function']=="turnOn":	pulse( onPinForOutlet[ query['outlet'] ] )
-	elif	query['function']=="turnOff":	pulse( offPinForOutlet[ query['outlet'] ] )
+	if query['id']=="4":
+		send( 1-int(query['state']) )
+	else:
+		if query['state']=="0":
+			pulse( onPinForOutlet[ query['id'] ] )
+		
+		elif query['state']=="1":
+			pulse( offPinForOutlet[ query['id'] ] )
 	
 	start_response('200 OK', [('Content-type', 'text/plain'), ('Content-Length', '')] )
 	
@@ -31,7 +37,13 @@ def pulse(pin):
 	os.system("echo out > /sys/devices/virtual/gpio/gpio"+spin+"/direction")
 	os.system("echo 1 > /sys/devices/virtual/gpio/gpio"+spin+"/value")
 
-	time.sleep(0.5)
+	time.sleep(0.3)
 	
 	os.system("echo 0 > /sys/devices/virtual/gpio/gpio"+spin+"/value")
 	os.system("gpio-admin unexport "+spin)
+
+def send(state):
+	sstate = str(state)
+	os.system("sudo /home/pi/WSUEECS/haf/send "+sstate)
+
+
