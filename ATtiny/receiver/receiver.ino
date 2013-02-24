@@ -1,22 +1,18 @@
-#include <Servo.h>
-
 #include <nRF24L01.h>
 #include <RF24.h>
 #include <RF24_config.h>
-#include <SPI.h>
+#include <SPI85.h>
 
-RF24 radio(9,10);
-Servo servo;
+RF24 radio(PB5,PB4);
 
-const uint64_t myAddress = 0x0000000000LL;
+const uint64_t myAddress = 1;
 
 const int payload_size = 32;
 char receive_payload[payload_size+1]; // +1 to allow room for a terminating NULL char
 
 void setup(void)
 {
-  servo.attach(7);
-  servo.write(30);
+  pinMode(PB3,OUTPUT);
   
   radio.begin();
   radio.setRetries(15,15);
@@ -40,9 +36,9 @@ void loop(void)
       }
       
       if ( receive_payload[0] == '1' )
-        servo.write(30);
+        digitalWrite(PB3,HIGH);
       else
-        servo.write(150);
+        digitalWrite(PB3,LOW);
     }
 }
 
