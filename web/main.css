@@ -1,12 +1,13 @@
 body {
 	margin: 0px;
 	padding: 0px;
+	background: #eee;
 }
 
 
 div.wrapper {
-	margin: 18px auto;
-	width: 280px;
+	margin: 10px auto;
+	width: 150px;
 	text-align: center;
 }
 
@@ -18,27 +19,24 @@ div.wrapper {
 	-ms-user-select: none;
 	user-select: none;
 	
-	-webkit-tap-highlight-color: #ffffff;
+	-webkit-tap-highlight-color: transparent;
 }
 
 div.tile {
-	width:130px;
-	height:130px;
-	margin:5px;
-	float:left;
+	width:150px;
+	height:90px;
 	background-size: cover;
 	cursor:pointer;
 }
 
 div.touched {
-	width: 120px;
-	height: 120px;
-	margin:10px;
+	box-shadow: 0px 0px 5px #444;
+	background-color: #fff;
 }
 
 
 div.outlet {
-	background-image: url('outlet.jpg');
+	background-image: url('outlet.png');
 }
 
 div.fan {
