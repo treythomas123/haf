@@ -1,10 +1,16 @@
 import os
 import time
+def log(message):
+	#log message
+	logfile = open("/home/pi/WSUEECS/haf/web/usage.log","a")
+	logfile.write(time.asctime()+': '+message+'\n')
+	logfile.close()
 
 def application(environ, start_response):
 	
 	# Build a dictionary containing all of the request parameters
 	
+	log(environ['QUERY_STRING'].replace('&', ' '))
 	querySplit = environ['QUERY_STRING'].split("&")
 	query = {}
 	for q in querySplit:

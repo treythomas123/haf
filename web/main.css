@@ -37,8 +37,8 @@ div.touched {
 }
 
 
-div.lamp {
-	background-image: url('lamp.jpg');
+div.outlet {
+	background-image: url('outlet.jpg');
 }
 
 div.fan {
@@ -50,3 +50,6 @@ div.blinds {
 	background-image: url('blinds.jpg');
 }
 
+div.deadbolt {
+	background-image: url('lock.jpg');
+}
