@@ -49,25 +49,15 @@ void loop(void)
       } else {
         
         // Unlock
-        digitalWrite(PB5,HIGH);
-        delay(100);
-        digitalWrite(PB5,LOW);
-        delay(100);
+        for ( int i = 0, i < 4, i++ ) {
+
+          digitalWrite(PB5,HIGH);
+          delay(100);
+          digitalWrite(PB5,LOW);
+          delay(100);
         
-        digitalWrite(PB5,HIGH);
-        delay(100);
-        digitalWrite(PB5,LOW);
-        delay(100);
-        
-        digitalWrite(PB5,HIGH);
-        delay(100);
-        digitalWrite(PB5,LOW);
-        delay(100);
-        
-        digitalWrite(PB5,HIGH);
-        delay(100);
-        digitalWrite(PB5,LOW);
-        delay(100);
+        }
+
       }
       
     }
