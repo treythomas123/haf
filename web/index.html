@@ -8,9 +8,9 @@
 	<script>
 		(function(doc) {
 			var viewport = document.getElementById('viewport');
-			if ( navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) {
-				doc.getElementById("viewport").setAttribute("content", "width=device-width; initial-scale=1.5; maximum-scale=1.5; minimum-scale=1.5; user-scalable=0");
-			} 
+			//if ( navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) {
+				doc.getElementById("viewport").setAttribute("content", "width=device-width; initial-scale=1.2; maximum-scale=1.2; minimum-scale=1.2; user-scalable=0");
+			//} 
 		}(document));
 		
 		document.ontouchmove = function(event){
@@ -23,15 +23,17 @@
 <body>
 
 <div class="wrapper">
-	<!--<div class="tile blinds" state="0" id="0"></div>-->
 	<div class="tile deadbolt" state="0" id="3"></div>
 	<div class="tile outlet" state="0" id="1"></div>
 	<div class="tile outlet" state="0" id="2"></div>
+	<div class="tile blinds" state="0" id="5"></div>
 	
 	<div style="clear:both"></div>
 </div>
 
 <script>
+
+$.ajaxSetup({ cache: false });
 
 var preventClick = false;
 
