@@ -1,31 +1,21 @@
-#include <Servo8Bit.h>
 #include <nRF24L01.h>
 #include <RF24.h>
 #include <RF24_config.h>
-#include <SPI85.h>
+#include <SPI.h>
+#include <Servo.h>
 
-RF24 radio(PB5,PB4);
-Servo8Bit servo;
+RF24 radio(9,10);
+Servo servo;
 
-const uint64_t myAddress = 4;
+const uint64_t myAddress = 5;
 
 const int payload_size = 32;
 char receive_payload[payload_size+1]; // +1 to allow room for a terminating NULL char
 
 void setup(void)
 {
-  pinMode(PB3,OUTPUT);
-  
-  servo.attach(PB3);
-  
-  while (true) {
-    servo.write(30);
-    delay(1000);
-    servo.write(150);
-    delay(1000);
-    
-    //SoftwareServo::refresh();
-  }
+  servo.attach(7);
+  servo.write(30);
   
   radio.begin();
   radio.setRetries(15,15);
