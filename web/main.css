@@ -4,7 +4,6 @@ body {
 	background: #eee;
 }
 
-
 div.wrapper {
 	margin: 10px auto;
 	width: 150px;
@@ -34,15 +33,9 @@ div.touched {
 	background-color: #fff;
 }
 
-
 div.outlet {
 	background-image: url('outlet.png');
 }
-
-div.fan {
-	background-image: url('fan.jpg');
-}
-
 
 div.blinds {
 	background-image: url('blinds.png');
