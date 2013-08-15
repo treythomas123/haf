@@ -15,7 +15,7 @@ Lock = {
 		control.append(unlockButton);
 	
 		unlockButton.on("click", function() {
-			$.post( 'control/'+id, { state: 0 } );
+			$.get( 'sendMessage.php?device='+id+'&state=0' );
 		});
 	
 	
@@ -25,7 +25,7 @@ Lock = {
 		control.append(lockButton);
 	
 		lockButton.on("click", function() {
-			$.post( 'control/'+id, { state: 1 } );
+			$.get( 'sendMessage.php?device='+id+'&state=1' );
 		});
 	
 		return control[0];

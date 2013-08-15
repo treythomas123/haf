@@ -16,7 +16,7 @@ Outlet = {
 		control.append(offButton);
 	
 		offButton.on("click", function() {
-			$.post( 'control/'+id, { state: 0 } );
+			$.get( 'sendMessage.php?device='+id+'&state=0' );
 		});
 	
 	
@@ -26,7 +26,7 @@ Outlet = {
 		control.append(onButton);
 	
 		onButton.on("click", function() {
-			$.post( 'control/'+id, { state: 1 } );
+			$.get( 'sendMessage.php?device='+id+'&state=1' );
 		});
 	
 		return control[0];

@@ -1,14 +1,10 @@
 var controls = [ 
 	{
-		id: 1,
+		id: 3,
 		type: "Lock",
 		label: "Front door"
 	}, {
-		id: 5,
-		type: "DoesNotExist",
-		label: "Back Door"
-	}, {
-		id: 2,
+		id: 1,
 		type: "Outlet",
 		label: "Living Room Lamp"
 	}
