@@ -1,0 +1,8 @@
+.lock.control span {
+	display:block;
+}
+
+.lock.control button {
+	width: 100px;
+	padding: 5px;
+}

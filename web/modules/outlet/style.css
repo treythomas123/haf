@@ -1,0 +1,8 @@
+.outlet.control span {
+	display:block;
+}
+
+.outlet.control button {
+	width: 100px;
+	padding: 5px;
+}
