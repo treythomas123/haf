@@ -1,0 +1,24 @@
+nrf24l01
+
+Datasheet
+http://www.robotshop.com/content/PDF/datasheet-wir001.pdf
+
+maniacbug's Arduino library (RF24)
+https://github.com/maniacbug/RF24
+
+purinda's port of RF24 for BeagleBone 
+https://bitbucket.org/purinda/rf24bb/wiki/Home
+
+direk's port of RF24BB for Raspberry Pi
+http://www.raspberrypi.org/phpBB3/viewtopic.php?t=17061
+http://www.sendspace.com/file/6ixtda
+
+Getting SPI working on the Pi
+http://www.brianhensley.net/2012/07/getting-spi-working-on-raspberry-pi.html
+http://mitchtech.net/raspberry-pi-arduino-spi/
+
+ATtiny85 library 
+http://arduino.cc/forum/index.php/topic,115822.30.html
+
+Command to burn fuses on ATtiny85 to use reset pin (PB5) as IO (DANGER: removes ability to program with ISP, so make sure the code is correct before doing this)
+avrdude -c stk500v1 -P /dev/tty.usbserial-A6008hzO -b 19200 -p attiny85 -U lfuse:w:0xe2:m -U hfuse:w:0x5f:m -U efuse:w:0xff:m
